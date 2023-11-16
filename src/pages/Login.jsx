@@ -4,6 +4,8 @@ import axios from "axios";
 import useAuth from "../hooks/useAuth";
 import Logo from "../assets/logo.png";
 import { GoogleLogin } from '@react-oauth/google';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -105,15 +107,16 @@ const Login = () => {
             </form>
 
             <div className="flex flex-col justify-center items-center   mt-20 gap-2">
-              
+            <GoogleOAuthProvider clientId="139591975962-a8qa76tujldv7l85prrinh5vilumtcb9.apps.googleusercontent.com">
             <GoogleLogin
-                onSuccess={credentialResponse => {
-                  console.log(credentialResponse);
-                }}
-                onError={() => {
-                  console.log('Login Failed');
-                }}
+        onSuccess={credentialResponse => {
+          console.log(credentialResponse);
+        }}
+        onError={() => {
+          console.log('Login Failed');
+        }}
             />
+            </GoogleOAuthProvider>  
             </div>
           </div>
         </div>
